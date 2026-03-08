@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #FF6B2C;
+  --color-brand-light: #ffe8df;
+  --color-bg-page: #F6F7FB;
+}
+
+/* Reset link styling */
+@layer base {
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+/* Smooth font rendering */
+body {
+  background-color: var(--color-bg-page);
+  color: var(--color-gray-900);
+}
