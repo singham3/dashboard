@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ['api.instifly.dpdns.org', "localhost", "127.0.0.1"]
 # Application definition
 
 INSTALLED_APPS = [
-    'intu',
+    'account',
     'rest_framework',
     'rest_framework_simplejwt',
     "corsheaders",
@@ -104,6 +104,19 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.CursorPagination',
+    'PAGE_SIZE': 10,
+    "DEFAULT_THROTTLE_CLASSES": [
+        "rest_framework.throttling.UserRateThrottle",
+    ],
+    "DEFAULT_THROTTLE_RATES": {
+        "user": "500/min"
+    },
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
@@ -145,20 +158,9 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = True
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 CSRF_TRUSTED_ORIGINS = ["https://api.instifly.dpdns.org/"]
-# settings.py
 
 AWS_REGION = "ap-south-1"
 AWS_STORAGE_BUCKET_NAME = "instifly-video-storage"
-
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
-     "DEFAULT_THROTTLE_CLASSES": [
-        "rest_framework.throttling.UserRateThrottle",
-    ],
-    "DEFAULT_THROTTLE_RATES": {
-        "user": "500/min"
-    }
-}
 ExpiresIn=600
+
+AUTH_USER_MODEL = 'account.User'

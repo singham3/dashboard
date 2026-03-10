@@ -3,12 +3,13 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const Dashboard = lazy(() => import('../pages/Dashboard'));
-const Lessons = lazy(() => import('../pages/Lessons'));
+const Users = lazy(() => import('../pages/Users'));
 const Leaderboard = lazy(() => import('../pages/Leaderboard'));
 const Courses = lazy(() => import('../pages/Courses'));
 const Certificates = lazy(() => import('../pages/Certificates'));
 const Messages = lazy(() => import('../pages/Messages'));
 const Settings = lazy(() => import('../pages/Settings'));
+const Profile = lazy(() => import('../pages/Profile'));
 const Login = lazy(() => import('../pages/Login'));
 
 const ProtectedRoute = ({ children }) => {
@@ -23,12 +24,8 @@ export default function AppRouter() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-        <Route path="/dashboard/lessons" element={<ProtectedRoute><Lessons /></ProtectedRoute>} />
-        <Route path="/dashboard/leaderboard" element={<ProtectedRoute><Leaderboard /></ProtectedRoute>} />
-        <Route path="/dashboard/courses" element={<ProtectedRoute><Courses /></ProtectedRoute>} />
-        <Route path="/dashboard/certificates" element={<ProtectedRoute><Certificates /></ProtectedRoute>} />
-        <Route path="/dashboard/messages" element={<ProtectedRoute><Messages /></ProtectedRoute>} />
-        <Route path="/dashboard/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
+        <Route path="/dashboard/users" element={<ProtectedRoute><Users /></ProtectedRoute>} />
+        <Route path="/dashboard/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
       </Routes>
     </Suspense>
   );

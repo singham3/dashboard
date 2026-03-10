@@ -6,20 +6,15 @@ import {
   GraduationCap,
   Award,
   MessageSquare,
-  Settings
+  Settings,
+  Users
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import React from "react";
 
 const menu = [
   { name: 'Overview', path: '/dashboard', icon: Home },
-  { name: 'Lessons', path: '/dashboard/lessons', icon: BookOpen },
-  { name: 'Leaderboard', path: '/dashboard/leaderboard', icon: Trophy },
-  { name: 'Skill Graph', path: '/dashboard/skill-graph', icon: TrendingUp },
-  { name: 'Courses', path: '/dashboard/courses', icon: GraduationCap },
-  { name: 'Certificates', path: '/dashboard/certificates', icon: Award },
-  { name: 'Messages', path: '/dashboard/messages', icon: MessageSquare, badge: 5 },
-  { name: 'Settings', path: '/dashboard/settings', icon: Settings },
+  { name: 'Users', path: '/dashboard/users', icon: Users },
 ];
 
 export default React.memo(function Sidebar() {

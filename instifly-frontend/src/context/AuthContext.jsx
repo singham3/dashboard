@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import store from '../redux/store';
+import { clearUser } from '../redux/userSlice';
 
 const AuthContext = createContext();
 
@@ -17,6 +19,8 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+    store.dispatch(clearUser());
     setIsAuthenticated(false);
     navigate('/');
   };

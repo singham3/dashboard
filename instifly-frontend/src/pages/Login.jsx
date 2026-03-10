@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { useLogin } from "../queries/authQueries";
-import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 export default function Login() {
   const [form, setForm] = useState({ username: "", password: "" });
   const { mutate, isLoading } = useLogin();
-  const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     mutate(form, {
-      onSuccess: () => navigate("/dashboard"),
+      onSuccess: (data) => login(data.access),
     });
   };
 
